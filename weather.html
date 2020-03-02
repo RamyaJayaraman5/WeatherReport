@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css"> <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <META HTTP-EQUIV="Refresh" CONTENT="60" URL="C:/Users/Lenovo/Desktop/weather-station/weather.html"> -->
+    <META HTTP-EQUIV="Refresh" CONTENT="60">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" language="JavaScript">
+
+
+<!--https://thingspeak.com/channels/662276/field/1/last.html;-->
+<!--https://thingspeak.com/channels/647067/field/1/last.html -->
+var source = new EventSource("https://thingspeak.com/channels/662276");
+source.onmessage = function(event) {
+  document.getElementById("result").innerHTML += event.data + "<br>";
+};
+//weather station outside
+ $.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/662276/field/1/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#outsidefield1").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/662276/field/2/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#outsidefield2").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/662276/field/3/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#outsidefield3").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/662276/field/4/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#outsidefield4").html(data);
+			
+        },
+    });
+		
+	
+	//weather station inside
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/647067/field/1/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#insidefield1").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/647067/field/2/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#insidefield2").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/647067/field/3/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#insidefield3").html(data);
+			
+        },
+    });
+	
+	$.ajax({
+        crossOrigin: true,
+        url: 'https://thingspeak.com/channels/647067/field/4/last.html',
+        success: function(data) {
+            console.log(data);
+			$("#insidefield4").html(data);
+			
+        },
+    });
+		
+   </script>
+     
+</head>
+<body>
+
+<div id="report">
+ <div class="container">
+    
+    <div class="row">
+    <div class="col-sm-6">
+        <h4>Wetterstation Auẞen</h4>
+       <table class="noborder"> 
+       
+      <tbody>
+         <tr>
+             <td></td>
+         </tr>
+
+        <tr>
+          <td><img src="svgIcons\weather.svg" class="logo"/></td>
+          <td>Temperatur</td>
+           <td><p id="outsidefield1" class="brown"></p></td>
+            <td><sup class="brown">&#186 C</sup></td>
+        </tr> 
+        <tr>
+            <td><img src="svgIcons\drop.svg" class="logo"/></td>
+            <td>Luftfeucht</td>
+             <td><p id="outsidefield2" class="blue"></p></td>
+              <td><sup class="blue">%</sup></td>
+          </tr> 
+          <tr>
+            <td><img src="svgIcons\dashboard.svg" class="logo"/></td>
+            <td>Taupunkt</td>
+             <td><p id="outsidefield3" class="green"></p></td>
+              <td><sup class="green">&#186 C</sup></td>
+          </tr> 
+          <tr>
+            <td><img src="svgIcons\Battery.svg" class="logo"/></td>
+            <td>Batteriesp</td>
+             <td><p id="outsidefield4" class="violet"></p></td>
+              <td><sup class="violet">V</sup></td>
+          </tr> 
+      </tbody>
+      
+    </table>
+    </div>
+    
+    <div class="col-sm-6">
+        <h4>Wetterstation Innen</h4>
+        <table class="noborder"> 
+       
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+               <tr>
+                <td><img src="svgIcons\weather.svg" class="logo"/></td>
+                <td>Temperatur</td>
+                 <td><p id="insidefield1" class="brown"></p></td>
+                  <td><sup class="brown">&#186 C</sup></td>
+              </tr> 
+              <tr>
+                  <td><img src="svgIcons\drop.svg" class="logo"/></td>
+                  <td>Luftfeucht</td>
+                   <td><p id="insidefield2" class="blue"></p></td>
+                    <td><sup class="blue">%</sup></td>
+                </tr> 
+                <tr>
+                  <td><img src="svgIcons\dashboard.svg" class="logo"/></td>
+                  <td>Luftdruck</td>
+                   <td><p id="insidefield3" class="green"></p></td>
+                    <td><sup class="green">hPa</sup></td>
+                </tr> 
+                <tr>
+                  <td><img src="svgIcons\AQ3.svg" class="logo"/></td>
+                  <td>Luftqualitat</td>
+                   <td><p id="insidefield4" class="violet"></p></td>
+                    <td><sup class="violet">Ohm</sup></td>
+                </tr> 
+            </tbody>
+            
+          </table>
+    </div>
+    
+</div>
+  </div>
+
+
+</div>
+<div id="result"></div>
+</body>
+</html>
